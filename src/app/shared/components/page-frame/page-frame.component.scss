@@ -1,0 +1,58 @@
+:host {
+  display: block;
+}
+
+.page-frame {
+  position: relative;
+  background: var(--color-papyrus);
+  border: 1px solid var(--color-gold);
+  box-shadow:
+    0 0 0 6px var(--color-void-2),
+    0 0 0 7px var(--color-gold),
+    0 20px 40px -20px rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
+  padding: 2.5rem;
+  margin-block: 2rem;
+  color: var(--color-ink);
+}
+
+.page-frame__content {
+  position: relative;
+  z-index: 1;
+}
+
+.ornament {
+  position: absolute;
+  color: var(--color-gold);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.ornament--tl {
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+.ornament--tr {
+  top: 0.5rem;
+  right: 0.5rem;
+  transform: scaleX(-1);
+}
+
+.ornament--bl {
+  bottom: 0.5rem;
+  left: 0.5rem;
+  transform: scaleY(-1);
+}
+
+.ornament--br {
+  bottom: 0.5rem;
+  right: 0.5rem;
+  transform: scale(-1, -1);
+}
+
+@media (max-width: 640px) {
+  .page-frame {
+    padding: 1.5rem;
+  }
+}

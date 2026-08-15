@@ -1,0 +1,59 @@
+<main class="detail-page">
+  <a class="back-link" routerLink="/">← Back to the index</a>
+
+  @if (loading()) {
+    <app-loading-state message="Opening this page of the codex…" />
+  } @else if (error()) {
+    <app-empty-state title="Unreadable page" [message]="error()!" />
+  } @else {
+    @if (card(); as c) {
+      <app-page-frame>
+        <article class="spread">
+          <figure class="spread__plate">
+            <img [src]="c.images.full" [alt]="c.name" />
+          </figure>
+
+          <div class="spread__ledger">
+            <h1 class="spread__name">{{ c.name }}</h1>
+            <p class="spread__type">{{ c.type }} · {{ c.race }}</p>
+
+            @if (c.attribute || c.level || c.atk !== undefined || c.def !== undefined) {
+              <dl class="stat-row">
+                @if (c.attribute) {
+                  <div class="stat">
+                    <dt>Attribute</dt>
+                    <dd>{{ c.attribute }}</dd>
+                  </div>
+                }
+                @if (c.level) {
+                  <div class="stat">
+                    <dt>Level</dt>
+                    <dd>{{ c.level }}</dd>
+                  </div>
+                }
+                @if (c.atk !== undefined) {
+                  <div class="stat">
+                    <dt>ATK</dt>
+                    <dd>{{ c.atk }}</dd>
+                  </div>
+                }
+                @if (c.def !== undefined) {
+                  <div class="stat">
+                    <dt>DEF</dt>
+                    <dd>{{ c.def }}</dd>
+                  </div>
+                }
+              </dl>
+            }
+
+            <p class="spread__description">{{ c.description }}</p>
+
+            @if (c.archetype) {
+              <p class="spread__archetype">Archetype: {{ c.archetype }}</p>
+            }
+          </div>
+        </article>
+      </app-page-frame>
+    }
+  }
+</main>

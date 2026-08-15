@@ -1,0 +1,157 @@
+.index-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.index-page__header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.index-page__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--color-gold-bright);
+}
+
+.index-page__subtitle {
+  color: var(--color-papyrus-dark);
+  font-style: italic;
+}
+
+.search-bar__label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: var(--color-ink);
+}
+
+.search-bar__row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.search-bar__input {
+  flex: 1 1 240px;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--color-ink);
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border-radius: 2px;
+}
+
+.search-bar__button {
+  padding: 0.65rem 1.5rem;
+  background: var(--color-lapis);
+  color: var(--color-papyrus);
+  border: 1px solid var(--color-ink);
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.search-bar__button:hover {
+  background: var(--color-lapis-bright);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--color-papyrus);
+}
+
+.card-tile__frame {
+  width: 100%;
+  aspect-ratio: 59 / 86;
+  border: 1px solid var(--color-gold);
+  box-shadow:
+    0 0 0 4px var(--color-void-2),
+    0 0 0 5px var(--color-gold);
+  overflow: hidden;
+  background: var(--color-void-2);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card-tile__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-tile:hover .card-tile__frame,
+.card-tile:focus-visible .card-tile__frame {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 4px var(--color-void-2),
+    0 0 0 5px var(--color-gold-bright);
+}
+
+.card-tile__name {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.pagination__button {
+  padding: 0.6rem 1.3rem;
+  background: transparent;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold-bright);
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  border-radius: 2px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.pagination__button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pagination__button:not(:disabled):hover {
+  background: var(--color-gold);
+  color: var(--color-void);
+}
+
+.retry-button {
+  margin-top: 1rem;
+  padding: 0.55rem 1.2rem;
+  background: var(--color-ochre);
+  color: var(--color-papyrus);
+  border: none;
+  font-family: var(--font-display);
+  cursor: pointer;
+  border-radius: 2px;
+}

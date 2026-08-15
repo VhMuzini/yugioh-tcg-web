@@ -1,0 +1,57 @@
+<main class="index-page">
+  <header class="index-page__header">
+    <h1 class="index-page__title">Yu-Gi-Oh! Codex</h1>
+    <p class="index-page__subtitle">An archive of the ancient duel — search the tome by name.</p>
+  </header>
+
+  <app-page-frame>
+    <form class="search-bar" (ngSubmit)="onSearchSubmit()">
+      <label class="search-bar__label" for="search-input">Search the archive</label>
+      <div class="search-bar__row">
+        <input
+          id="search-input"
+          type="text"
+          name="search"
+          class="search-bar__input"
+          placeholder="e.g. Dark Magician"
+          [(ngModel)]="searchTerm"
+          autocomplete="off"
+        />
+        <button type="submit" class="search-bar__button">Search</button>
+      </div>
+    </form>
+  </app-page-frame>
+
+  @if (loading()) {
+    <app-loading-state message="Consulting the archive…" />
+  } @else if (error()) {
+    <app-empty-state title="The archive is unreachable" [message]="error()!">
+      <button type="button" class="retry-button" (click)="onSearchSubmit()">Try again</button>
+    </app-empty-state>
+  } @else if (cards().length === 0) {
+    <app-empty-state
+      title="No cards found"
+      message="No entries in the codex match that name. Try another search."
+    />
+  } @else {
+    <div class="card-grid">
+      @for (card of cards(); track card.id) {
+        <a class="card-tile" [routerLink]="['/cards', card.id]">
+          <div class="card-tile__frame">
+            <img [src]="card.image" [alt]="card.name" loading="lazy" />
+          </div>
+          <span class="card-tile__name">{{ card.name }}</span>
+        </a>
+      }
+    </div>
+
+    <nav class="pagination" aria-label="Pagination">
+      <button type="button" class="pagination__button" [disabled]="offset() === 0" (click)="prev()">
+        ← Previous page
+      </button>
+      <button type="button" class="pagination__button" [disabled]="isLastPage()" (click)="next()">
+        Next page →
+      </button>
+    </nav>
+  }
+</main>

@@ -1,0 +1,15 @@
+.empty-state {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--color-papyrus-dark);
+}
+
+.empty-state__title {
+  color: var(--color-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state__message {
+  max-width: 40ch;
+  margin: 0 auto;
+}
