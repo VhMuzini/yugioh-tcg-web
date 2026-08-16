@@ -4,7 +4,11 @@
 
 .page-frame {
   position: relative;
-  background: var(--color-papyrus);
+  /* Papyrus fiber texture */
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.02) 0px, rgba(0, 0, 0, 0.02) 1px, transparent 1px, transparent 6px),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.015) 0px, rgba(0, 0, 0, 0.015) 1px, transparent 1px, transparent 6px),
+    var(--color-papyrus);
   border: 1px solid var(--color-gold);
   box-shadow:
     0 0 0 6px var(--color-void-2),

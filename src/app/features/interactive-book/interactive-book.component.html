@@ -1,0 +1,47 @@
+<section class="tome" aria-label="Interactive tome">
+  <h2 class="tome__heading">The Living Tome</h2>
+  <p class="tome__intro">Open its cover and turn the pages to read the sealed entries of the codex.</p>
+
+  @if (errorList()) {
+    <p class="tome__error">{{ errorList() }}</p>
+  } @else if (!isOpen()) {
+    <button type="button" class="tome__cover" (click)="open()" [disabled]="loadingList()">
+      <app-scarab-icon [size]="44" />
+      <span>{{ loadingList() ? 'Preparing the tome…' : 'Open the Tome' }}</span>
+    </button>
+  } @else {
+    <div class="tome__book">
+      <button type="button" class="tome__close" (click)="close()" aria-label="Close the tome">✕</button>
+
+      <div class="spread-flip">
+        <div class="page page--left" [class.page--turning]="flipDirection() === 'prev'">
+          @if (currentCard(); as c) {
+            <img [src]="c.images.full" [alt]="c.name" />
+          } @else {
+            <p class="page__loading">…</p>
+          }
+        </div>
+
+        <div class="page page--right" [class.page--turning]="flipDirection() === 'next'">
+          @if (currentCard(); as c) {
+            <h3 class="page__name">{{ c.name }}</h3>
+            <p class="page__meta">{{ c.type }} · {{ c.race }}</p>
+            <p class="page__description">{{ c.description }}</p>
+          } @else {
+            <p class="page__loading">Reading…</p>
+          }
+        </div>
+      </div>
+
+      <nav class="tome__nav" aria-label="Turn pages">
+        <button type="button" (click)="prev()" [disabled]="!hasPrev() || !!flipDirection()">
+          ← Previous page
+        </button>
+        <span class="tome__page-number">{{ pageIndex() + 1 }} / {{ pages().length }}</span>
+        <button type="button" (click)="next()" [disabled]="!hasNext() || !!flipDirection()">
+          Next page →
+        </button>
+      </nav>
+    </div>
+  }
+</section>

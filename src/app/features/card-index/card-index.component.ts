@@ -6,13 +6,23 @@ import type { CardSummary } from '../../core/models/card.model';
 import { PageFrameComponent } from '../../shared/components/page-frame/page-frame.component';
 import { LoadingStateComponent } from '../../shared/components/loading-state/loading-state.component';
 import { EmptyStateComponent } from '../../shared/components/empty-state/empty-state.component';
+import { SectionDividerComponent } from '../../shared/components/section-divider/section-divider.component';
+import { InteractiveBookComponent } from '../interactive-book/interactive-book.component';
 
 const PAGE_SIZE = 24;
 
 @Component({
   selector: 'app-card-index',
   standalone: true,
-  imports: [FormsModule, RouterLink, PageFrameComponent, LoadingStateComponent, EmptyStateComponent],
+  imports: [
+    FormsModule,
+    RouterLink,
+    PageFrameComponent,
+    LoadingStateComponent,
+    EmptyStateComponent,
+    SectionDividerComponent,
+    InteractiveBookComponent,
+  ],
   templateUrl: './card-index.component.html',
   styleUrl: './card-index.component.scss',
 })
